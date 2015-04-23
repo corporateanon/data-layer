@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.5.4",
     "babel-core": "^5.1.11",
     "babel-loader": "^5.0.0",
+    "bridge": "git://github.com/corporateanon/bridge",
     "react": "^0.13.2",
     "webpack": "^1.8.9"
   },

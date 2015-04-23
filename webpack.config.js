@@ -3,8 +3,12 @@ module.exports = {
   entry: "./app.js",
   devtool: "#inline-source-map",
   module: {
-    loaders: [
-     { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+    loaders: [{
+        test: /\.js$/,
+        // exclude: /node_modules/,
+        // include: /node_modules\/bridge/,
+        loader: 'babel-loader'
+      }
       // { test: /\.less$/, loader: "style!css!less" },
       // { test: /\.png$/, loader: "file?prefix=img/" }
     ]
