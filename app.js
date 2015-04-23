@@ -1,51 +1,18 @@
 import 'babel-core/polyfill';
 import React from 'react';
-import DSTester from './ds-tester';
+import FluxComponent from 'flummox/component';
+import Flux from './flux/flux';
+import MainPage from './ui/main-page';
 
-
-var Some = React.createClass({
-  getInitialState: function() {
-    return {
-      ipAddress: null,
-      loading: false
-    };
-  },
-  componentDidMount: function() {
-    this.tester = new DSTester();
-  },
-
-  setLoading: function () {
-    this.setState({loading: true});
-  },
-
-  setReady: function () {
-    this.setState({loading: false});
-  },
-
-  onButtonClick: function () {
-    this.setLoading();
-    this.tester.foo({
-      a: 'b'
-    }).then((res)=>{
-      this.setState({
-        ipAddress: res.origin,
-      });
-    }).then(this.setReady, this.setReady);
-  },
-
+var App = React.createClass({
   render: function() {
     return (
-      <div>
-        <button onClick={this.onButtonClick}>Test</button>
-        <div>
-          {this.state.loading ? <b>Loading</b> : false}
-
-          {this.state.ipAddress}
-        </div>
-      </div>
+      <FluxComponent flux={this.props.flux}>
+        <MainPage />
+      </FluxComponent>
     );
   }
-
 });
 
-React.render(<Some />, document.body);
+const flux = new Flux();
+React.render(<App flux={flux}/>, document.body);

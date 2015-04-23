@@ -5,7 +5,7 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.js$/,
-        // exclude: /node_modules/,
+        exclude: /node_modules\/react/,
         // include: /node_modules\/bridge/,
         loader: 'babel-loader'
       }
