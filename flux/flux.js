@@ -1,11 +1,11 @@
 import { Flummox } from 'flummox';
-import MessageActions from './message-actions';
-import MessageStore from './message-store';
+import FeedActions from './actions/message';
+import FeedStore from './stores/message';
 
 export default class Flux extends Flummox {
   constructor() {
     super();
-    this.createActions('messages', MessageActions);
-    this.createStore('messages', MessageStore, this);
+    this.createActions('feed', FeedActions);
+    this.createStore('feed', FeedStore, this);
   }
 }
