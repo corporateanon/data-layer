@@ -1,6 +1,6 @@
 import { Flummox } from 'flummox';
-import FeedActions from './actions/message';
-import FeedStore from './stores/message';
+import FeedActions from './actions/feed';
+import FeedStore from './stores/feed';
 
 export default class Flux extends Flummox {
   constructor() {

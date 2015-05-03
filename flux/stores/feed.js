@@ -1,5 +1,8 @@
-import { Store } from 'flummox';
-import Feed from '../domain/Feed';
+import {
+  Store
+}
+from 'flummox';
+import Feed from '../../domain/feed';
 
 
 export default class FeedStore extends Store {
@@ -11,13 +14,24 @@ export default class FeedStore extends Store {
     this.register(feedActions.readMessages, this.handleReadMessages);
 
     this.state = {
-      feed: Feed([])
+      feed: Feed([]),
+      unseen: Feed([]),
+      messagesCount: 0,
+      unseenMessagesCount: 0,
     };
   }
 
-  handleNewMessage(content) {
+  handleNewMessage(message) {
+    let oldFeed = this.state.feed;
+    let feed = Feed.update(oldFeed, {$unshift: [message]});
+    let messagesCount = feed.length;
+
+    this.setState({ feed, messagesCount });
+    console.log('handleNewMessage', message);
+    console.log('messagesCount = ', this.state.messagesCount);
   }
 
   handleReadMessages(content) {
+    
   }
 }
